@@ -1,0 +1,31 @@
+{
+  "name": "sw-planets-angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.babel.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "jasmine": "^2.5.3",
+    "karma": "^1.5.0",
+    "karma-jasmine": "^1.1.0",
+    "sinon": "^1.17.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonthomasgray/sw-planets-angular.git"
+  },
+  "author": "Jason Gray",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasonthomasgray/sw-planets-angular/issues"
+  },
+  "homepage": "https://github.com/jasonthomasgray/sw-planets-angular#readme"
+}
