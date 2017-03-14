@@ -6,11 +6,43 @@
     <title>SW Planets</title>
     <link rel="stylesheet" href="app.css">
   </head>
-  <body class="container-fluid">
-    <header>
-      <h1>SW Planets</h1>
-      <p>Listing planets until the sun goes nova</p>
+  <body ng-app="sw-planets" class="container-fluid">
+    <header class="row text-center">
+      <h1 class="col-sm-12">SW Planets</h1>
+      <p class="col-sm-12">Listing planets until the sun goes nova</p>
     </header>
+    <nav>
+      <input type="text" placeholder="Search">
+    </nav>
+    <section ng-controller="PlanetsController as vm">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Population</th>
+            <th>Diameter</th>
+            <th>Rotation Period</th>
+            <th>Orbital Period</th>
+            <th>Terrain</th>
+            <th>Films</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="planet in vm.planets">
+            <th>{{planet.name}}</th>
+            <th>{{planet.population}}</th>
+            <th>{{planet.diameter}}</th>
+            <th>{{planet.rotation_period}}</th>
+            <th>{{planet.orbital_period}}</th>
+            <th>{{planet.terrain}}</th>
+            <th>{{planet.films}}</th>
+          </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+      </table>
+    </section>
 
+    <script src="app.js"></script>
   </body>
 </html>
