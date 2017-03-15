@@ -1,1 +1,34 @@
 @import 'bootstrap-sass/assets/stylesheets/bootstrap';
+
+$primary-color: #071218;
+$accent-color: #00BDD0;
+
+$header-bg: $primary-color;
+$table-head-bg: $accent-color;
+$table-bg: #F3F7FA;
+$nav-bg: #E3EAF4;
+
+
+$text-light: transparentize(white, 0.06);
+$text-light1: transparentize($text-light, 0.06);
+$text-light2: transparentize($text-light1, 0.06);
+
+$text-dark: $primary-color;
+$text-dark1: transparentize($text-dark, 0.06);
+$text-dark2: transparentize($text-dark1, 0.06);
+
+@import 'components/results-table/results-table';
+
+.header {
+  @include make-row();
+  background: $header-bg;
+  text-align: center;
+  color: $text-light;
+  padding: $padding-large-vertical $padding-base-horizontal;
+}
+
+.search {
+  @include make-row()
+  background: $nav-bg;
+  padding: $padding-base-vertical $padding-base-horizontal;
+}

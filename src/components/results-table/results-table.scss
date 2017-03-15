@@ -1,0 +1,29 @@
+.results-table {
+  border-radius: 8px;
+  border: none 0;
+  margin-top: $padding-base-vertical;
+}
+
+.results-table__header {
+  background: $table-head-bg;
+  color: $text-light;
+  text-transform: uppercase;
+}
+
+.results-table__header-cell {
+  font-weight: normal;
+}
+
+.results-table__body {
+  background: $table-bg;
+}
+
+.results-table__footer {
+  background: $nav-bg;
+  min-height: $padding-base-vertical;
+}
+
+.results-table__list {
+  list-style: none;
+  padding: 0;
+}

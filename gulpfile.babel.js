@@ -2,12 +2,30 @@ import gulp from 'gulp';
 import pump from 'pump';
 const plugins = require('gulp-load-plugins')();
 
+const paths = {
+  scripts: [
+    'bower_components/angular/angular.js',
+    'src/app.js',
+    'src/components/**/*.js',
+    'src/modules/**/*.js',
+  ],
+  tests: [
+    'src/components/**/*.spec.js',
+    'src/modules/**/*.spec.js',
+  ],
+  static: [
+    'src/index.html',
+  ],
+  sass: [
+    'src/app.scss',
+    'src/components/**/*.scss',
+    'src/modules/**/*.scss',
+  ]
+}
+
 gulp.task('scripts', (done) => {
   pump([
-    gulp.src([
-      'bower_components/angular/angular.js',
-      'src/app.js',
-    ]),
+    gulp.src(paths.scripts.concat(ignore(paths.tests))),
     plugins.babel(),
     plugins.concat('app.js'),
     gulp.dest('dist'),
@@ -16,7 +34,7 @@ gulp.task('scripts', (done) => {
 
 gulp.task('static', (done) => {
   pump([
-    gulp.src('src/index.html'),
+    gulp.src(paths.static),
     gulp.dest('dist'),
   ], done);
 })
@@ -31,8 +49,12 @@ gulp.task('sass', (done) => {
 
 gulp.task('watch', () => {
   gulp.watch('src/app.js', ['scripts']);
-  gulp.watch('src/index.html', ['static']);
-  gulp.watch('src/app.scss', ['sass']);
+  gulp.watch(paths.static, ['static']);
+  gulp.watch(paths.sass, ['sass']);
 });
 
 gulp.task('default', ['scripts', 'sass', 'static']);
+
+function ignore(globs) {
+  return globs.map((s) => '!' + s)
+}
