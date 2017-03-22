@@ -48,7 +48,7 @@ gulp.task('sass', (done) => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch('src/app.js', ['scripts']);
+  gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.static, ['static']);
   gulp.watch(paths.sass, ['sass']);
 });

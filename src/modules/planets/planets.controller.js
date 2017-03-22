@@ -4,20 +4,20 @@
   angular.module('sw-planets')
     .controller('PlanetsController', PlanetsController)
 
-  function PlanetsController($http) {
+  function PlanetsController(swApi) {
     const vm = this
     vm.planets = []
 
     initData();
 
     function initData() {
-      $http.get('http://swapi.co/api/planets')
+      swApi.planets()
         .then(setPlanetsData)
         .catch(showError)
     }
 
-    function setPlanetsData(response) {
-      vm.planets = response.data.results
+    function setPlanetsData(planets) {
+      vm.planets = planets.results
     }
 
     function showError(err) {

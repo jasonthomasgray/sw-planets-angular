@@ -31,19 +31,18 @@
           <tbody class="results-table__body">
             <tr ng-repeat="planet in vm.planets">
               <td>{{planet.name}}</td>
-              <td>{{planet.population}}</td>
-              <td>{{planet.diameter}}</td>
-              <td>{{planet.rotation_period}}</td>
-              <td>{{planet.orbital_period}}</td>
+              <td>{{planet.population | numberDisplay}}</td>
+              <td>{{planet.diameter | numberDisplay}}</td>
+              <td>{{planet.rotation_period | numberDisplay}}</td>
+              <td>{{planet.orbital_period | numberDisplay}}</td>
               <td>
                 <ul class="results-table__list">
-                  <!-- <li class="results-table__list-item" ng-repeat="type in planet.terrain">{{type}}</li> -->
-                  <li class="results-table__list-item">{{planet.terrain}}</li>
+                  <li class="results-table__list-item" ng-repeat="type in planet.terrain">{{type}}</li>
                 </ul>
               </td>
               <td>
                 <ul class="results-table__list">
-                  <li class="results-table__list-item" ng-repeat="film in planet.films">{{film}}</li>
+                  <li class="results-table__list-item" ng-repeat="film in planet.films">{{film.title}}</li>
                 </ul>
               </td>
             </tr>
