@@ -10,6 +10,7 @@ $table-head-bg: $accent-color;
 $table-bg: $bg-lighter;
 $nav-bg: $bg-light;
 
+$border-radius-base: 8px;
 
 $text-light: transparentize(white, 0.06);
 $text-light1: transparentize($text-light, 0.06);
@@ -19,9 +20,15 @@ $text-dark: $primary-color;
 $text-dark1: transparentize($text-dark, 0.06);
 $text-dark2: transparentize($text-dark1, 0.06);
 
+// bootstrap overrides
+$border-radius-base:  8px;
+$border-radius-large: 12px;
+$border-radius-small: 6px;
+
 // import components sass files
 @import 'components/results-table/results-table';
 @import 'components/pagination/pagination';
+@import 'components/results-search/results-search';
 
 .header {
   @include make-row();
