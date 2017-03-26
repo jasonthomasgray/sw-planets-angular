@@ -2,11 +2,13 @@
 
 $primary-color: #071218;
 $accent-color: #00BDD0;
+$bg-light: #E3EAF4;
+$bg-lighter: #F3F7FA;
 
 $header-bg: $primary-color;
 $table-head-bg: $accent-color;
-$table-bg: #F3F7FA;
-$nav-bg: #E3EAF4;
+$table-bg: $bg-lighter;
+$nav-bg: $bg-light;
 
 
 $text-light: transparentize(white, 0.06);
@@ -17,7 +19,9 @@ $text-dark: $primary-color;
 $text-dark1: transparentize($text-dark, 0.06);
 $text-dark2: transparentize($text-dark1, 0.06);
 
+// import components sass files
 @import 'components/results-table/results-table';
+@import 'components/pagination/pagination';
 
 .header {
   @include make-row();

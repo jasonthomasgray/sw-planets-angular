@@ -5,6 +5,7 @@ const plugins = require('gulp-load-plugins')();
 const paths = {
   scripts: [
     'bower_components/angular/angular.js',
+    'bower_components/angular-ui-router/release/angular-ui-router.js',
     'src/app.js',
     'src/components/**/*.js',
     'src/modules/**/*.js',
@@ -15,6 +16,8 @@ const paths = {
   ],
   static: [
     'src/index.html',
+    'src/components/**/*.html',
+    'src/modules/**/*.html',
   ],
   sass: [
     'src/app.scss',
@@ -34,7 +37,9 @@ gulp.task('scripts', (done) => {
 
 gulp.task('static', (done) => {
   pump([
-    gulp.src(paths.static),
+    gulp.src(paths.static, {base: 'src'}),
+    gulp.dest('dist'),
+    gulp.src('bower_components/bootstrap-sass/assets/fonts/**/*', {base: 'bower_components/bootstrap-sass/assets'}),
     gulp.dest('dist'),
   ], done);
 })

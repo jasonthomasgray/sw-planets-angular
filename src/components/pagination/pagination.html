@@ -1,0 +1,17 @@
+<ul class="pagination">
+  <li ng-class="{disabled: vm.isFirst}">
+    <a ng-href="{{vm.first}}" aria-label="First"><span>First</span></a>
+  </li>
+  <li ng-class="{disabled: vm.isFirst}">
+    <a ng-href="{{vm.previous}}" aria-label="Previous"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></a>
+  </li>
+  <li ng-class="{active: vm.current === page}" ng-repeat="page in vm.pages">
+    <a ui-sref="{{vm.state}}({page: page})">{{page}}<span class="sr-only" ng-if="page === vm.current">(current)</span></a>
+  </li>
+  <li ng-class="{disabled: vm.isLast}">
+    <a ng-href="{{vm.next}}" aria-label="Next"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+  </li>
+  <li ng-class="{disabled: vm.isLast}">
+    <a ng-href="{{vm.last}}" aria-label="Last"><span>Last</span></a>
+  </li>
+</ul>

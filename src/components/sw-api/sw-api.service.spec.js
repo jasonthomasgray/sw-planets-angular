@@ -1,6 +1,6 @@
 describe('swApi', () => {
 
-  beforeEach(module('sw-planets'))
+  beforeEach(module('sw-planets.components'))
 
   beforeEach(inject(function (swApi, $httpBackend) {
     this.swApi = swApi
@@ -14,14 +14,14 @@ describe('swApi', () => {
 
   describe('planets', () => {
 
-    it('should be', function () {
+    it('should be defined', function () {
       expect(this.swApi.planets).toBeDefined()
     })
 
     it("should return a promise for planets", function () {
       var promise = this.swApi.planets()
 
-      this.$httpBackend.expectGET('http://swapi.co/api/planets')
+      this.$httpBackend.expectGET('http://swapi.co/api/planets/')
         .respond({
           results: [
             {name: 'Saturn'},
@@ -37,6 +37,18 @@ describe('swApi', () => {
       expect(spy).toHaveBeenCalled()
     })
 
+    it("should request a specific page", function () {
+      this.swApi.planets({page: 4})
+
+      this.$httpBackend.expectGET('http://swapi.co/api/planets/?page=4')
+        .respond({
+          results: [],
+        })
+      var spy = jasmine.createSpy('then')
+
+      this.$httpBackend.flush()
+    })
+
     it("should request film data", function () {
       this.swApi.planets().then((data) => {
         this.planets = data.results
@@ -47,7 +59,7 @@ describe('swApi', () => {
         return [200, {id: parseInt(params.id)}];
       })
 
-      this.$httpBackend.expectGET('http://swapi.co/api/planets')
+      this.$httpBackend.expectGET('http://swapi.co/api/planets/')
         .respond({
           results: [
             {films: ['http://swapi.co/api/films/5', 'http://swapi.co/api/films/10']},
@@ -69,7 +81,7 @@ describe('swApi', () => {
         this.planets = data.results
       })
 
-      this.$httpBackend.expectGET('http://swapi.co/api/planets')
+      this.$httpBackend.expectGET('http://swapi.co/api/planets/')
         .respond({
           results: [
             {terrain: 'a, b, c'},
@@ -82,6 +94,84 @@ describe('swApi', () => {
 
     })
 
-  })
+    describe('pagination data', () => {
 
+      beforeEach(function () {
+        this.request = this.$httpBackend.expectGET('http://swapi.co/api/planets/')
+      })
+
+      it('should work for first page data', function () {
+        this.swApi.planets().then((data) => {
+          this.pagination = data.pagination
+        })
+
+        this.request.respond({
+          count: 61,
+          next: 'http://swapi.co/api/planets/?page=2',
+          previous: null,
+          results: [],
+        })
+
+        this.$httpBackend.flush()
+
+        expect(this.pagination).toEqual({
+          first: 1,
+          previous: null,
+          current: 1,
+          next: 2,
+          last: 7,
+          neighbours: [1,2,3],
+        })
+      })
+
+      it('should work for middle page data', function () {
+        this.swApi.planets().then((data) => {
+          this.pagination = data.pagination
+        })
+
+        this.request.respond({
+          count: 60,
+          next: 'http://swapi.co/api/planets/?page=4',
+          previous: 'http://swapi.co/api/planets/?page=2',
+          results: [],
+        })
+
+        this.$httpBackend.flush()
+
+        expect(this.pagination).toEqual({
+          first: 1,
+          previous: 2,
+          current: 3,
+          next: 4,
+          last: 6,
+          neighbours: [1,2,3,4,5],
+        })
+      })
+
+      it('should work for last page data', function () {
+        this.swApi.planets().then((data) => {
+          this.pagination = data.pagination
+        })
+
+        this.request.respond({
+          count: 55,
+          next: null,
+          previous: 'http://swapi.co/api/planets/?page=5',
+          results: [],
+        })
+
+        this.$httpBackend.flush()
+
+        expect(this.pagination).toEqual({
+          first: 1,
+          previous: 5,
+          current: 6,
+          next: null,
+          last: 6,
+          neighbours: [4,5,6],
+        })
+      })
+
+    })
+  })
 })

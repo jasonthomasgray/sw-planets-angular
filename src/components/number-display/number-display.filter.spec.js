@@ -1,6 +1,6 @@
 describe('numberDisplay', () => {
 
-  beforeEach(module('sw-planets'))
+  beforeEach(module('sw-planets.components'))
 
   beforeEach(inject(function ($filter) {
     this.$filter = $filter

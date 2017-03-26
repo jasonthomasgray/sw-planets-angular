@@ -14,55 +14,8 @@
     <nav class="search">
       <input type="text" placeholder="Search">
     </nav>
-    <section ng-controller="PlanetsController as vm">
-      <div class="results-table table-responsive">
-        <table class="table">
-          <thead class="results-table__header">
-            <tr>
-              <th class="results-table__header-cell">Name</th>
-              <th class="results-table__header-cell">Population</th>
-              <th class="results-table__header-cell">Diameter</th>
-              <th class="results-table__header-cell">Rotation Period</th>
-              <th class="results-table__header-cell">Orbital Period</th>
-              <th class="results-table__header-cell">Terrain</th>
-              <th class="results-table__header-cell">Films</th>
-            </tr>
-          </thead>
-          <tbody class="results-table__body">
-            <tr ng-repeat="planet in vm.planets">
-              <td>{{planet.name}}</td>
-              <td>{{planet.population | numberDisplay}}</td>
-              <td>{{planet.diameter | numberDisplay}}</td>
-              <td>{{planet.rotation_period | numberDisplay}}</td>
-              <td>{{planet.orbital_period | numberDisplay}}</td>
-              <td>
-                <ul class="results-table__list">
-                  <li class="results-table__list-item" ng-repeat="type in planet.terrain">{{type}}</li>
-                </ul>
-              </td>
-              <td>
-                <ul class="results-table__list">
-                  <li class="results-table__list-item" ng-repeat="film in planet.films">{{film.title}}</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot class="results-table__footer">
-            <tr>
-              <td colspan="7"></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      <nav aria-label="Results pagination">
-        <ul class="pagination">
-          <li class="disabled"><a href="#" aria-label="First"><span>First</span></a></li>
-          <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-          <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>
-          <li class="disabled"><a href="#" aria-label="Last"><span>Last</span></a></li>
-        </ul>
-      </nav>
+    <section ui-view>
+
     </section>
 
     <script src="app.js"></script>

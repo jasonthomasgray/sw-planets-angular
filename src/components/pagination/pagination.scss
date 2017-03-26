@@ -1,0 +1,21 @@
+
+.pagination-directive {
+  text-align: right;
+  text-align: end;
+}
+
+// Overrides for bootstrap
+.pagination > li > a {
+  border: none;
+  color: $text-dark;
+  border-radius: 50%;
+}
+.pagination > li > a:hover {
+  background: none;
+}
+
+.pagination > .active > a {
+  border: none;
+  background: $bg-light;
+  color: $text-dark;
+}

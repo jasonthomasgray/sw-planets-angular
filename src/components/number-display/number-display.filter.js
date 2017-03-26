@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('sw-planets')
+  angular.module('sw-planets.components')
     .filter('numberDisplay', numberDisplay)
 
   function numberDisplay() {
