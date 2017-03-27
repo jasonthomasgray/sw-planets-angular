@@ -11,7 +11,7 @@
     initData();
 
     function initData() {
-      swApi.planets({page: $stateParams.page})
+      swApi.planets({page: $stateParams.page, search: $stateParams.search})
         .then(setPlanetsData)
         .catch(showError)
     }

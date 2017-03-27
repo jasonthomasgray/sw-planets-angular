@@ -29,7 +29,7 @@ const paths = {
 gulp.task('scripts', (done) => {
   pump([
     gulp.src(paths.scripts.concat(ignore(paths.tests))),
-    plugins.babel(),
+    plugins.babel(), // TODO: stop running bower_components through here (gulp-if...)
     plugins.concat('app.js'),
     gulp.dest('dist'),
   ], done)

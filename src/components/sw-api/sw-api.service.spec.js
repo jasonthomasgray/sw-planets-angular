@@ -44,7 +44,19 @@ describe('swApi', () => {
         .respond({
           results: [],
         })
-      var spy = jasmine.createSpy('then')
+
+      this.$httpBackend.flush()
+    })
+
+    it("should send search query", function () {
+      this.swApi.planets({search: 'Hoth'})
+
+      this.$httpBackend.expectGET('http://swapi.co/api/planets/?search=Hoth')
+        .respond({
+          results: [{
+            name: 'Hoth',
+          }],
+        })
 
       this.$httpBackend.flush()
     })

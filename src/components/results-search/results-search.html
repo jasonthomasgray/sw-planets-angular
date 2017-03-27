@@ -1,7 +1,9 @@
-<div class="input-group results-search">
-  <span class="input-group-addon results-search__icon" id="result-search-addon">
-    <span class="sr-only">Search</span>
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-  </span>
-  <input type="text" class="form-control results-search__input" placeholder="Search" aria-describedby="result-search-addon">
-</div>
+<form ng-submit="vm.search($event)">
+  <div class="input-group results-search">
+    <span class="input-group-addon results-search__icon" id="result-search-addon">
+      <span class="sr-only">Search</span>
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </span>
+    <input ng-model="vm.query" type="text" class="form-control results-search__input" placeholder="Search" aria-describedby="result-search-addon">
+  </div>
+</form>
