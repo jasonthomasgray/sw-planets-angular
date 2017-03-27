@@ -37,6 +37,15 @@
             })
           }
 
+          // convert digit strings to numbers
+
+          Object.keys(planet).forEach((key) => {
+            const value = planet[key];
+            if (typeof value === 'string' && /^\d+$/.test(value)) {
+              planet[key] = Number(value)
+            }
+          })
+
           // parse terrain string into array to match film display
           if (planet.terrain) {
             planet.terrain = planet.terrain.split(',').map(s => s.trim())

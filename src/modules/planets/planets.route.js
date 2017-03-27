@@ -7,7 +7,7 @@
     $stateProvider
       .state({
         name: 'planets',
-        url: '/?search&page&sort&order',
+        url: '/?search&page',
         templateUrl: 'modules/planets/planets.index.html',
         controller: 'PlanetsController',
         controllerAs: 'vm',

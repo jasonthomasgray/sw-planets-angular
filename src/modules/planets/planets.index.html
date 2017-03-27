@@ -2,17 +2,17 @@
   <table class="table">
     <thead class="results-table__header">
       <tr>
-        <th class="results-table__header-cell">Name</th>
-        <th class="results-table__header-cell">Population</th>
-        <th class="results-table__header-cell">Diameter</th>
-        <th class="results-table__header-cell">Rotation Period</th>
-        <th class="results-table__header-cell">Orbital Period</th>
+        <th class="results-table__header-cell" sorter="name" ng-model="vm.order">Name</th>
+        <th class="results-table__header-cell" sorter="population" ng-model="vm.order">Population</th>
+        <th class="results-table__header-cell" sorter="diameter" ng-model="vm.order">Diameter</th>
+        <th class="results-table__header-cell" sorter="rotation_period" ng-model="vm.order">Rotation Period</th>
+        <th class="results-table__header-cell" sorter="orbital_period" ng-model="vm.order">Orbital Period</th>
         <th class="results-table__header-cell">Terrain</th>
         <th class="results-table__header-cell">Films</th>
       </tr>
     </thead>
     <tbody class="results-table__body">
-      <tr ng-repeat="planet in vm.planets">
+      <tr ng-repeat="planet in vm.planets | orderBy: vm.order">
         <td>{{planet.name}}</td>
         <td>{{planet.population | numberDisplay}}</td>
         <td>{{planet.diameter | numberDisplay}}</td>

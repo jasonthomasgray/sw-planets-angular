@@ -13,8 +13,8 @@ $nav-bg: $bg-light;
 $border-radius-base: 8px;
 
 $text-light: transparentize(white, 0.06);
-$text-light1: transparentize($text-light, 0.06);
-$text-light2: transparentize($text-light1, 0.06);
+$text-light1: transparentize($text-light, 0.1);
+$text-light2: transparentize($text-light1, 0.1);
 
 $text-dark: $primary-color;
 $text-dark1: transparentize($text-dark, 0.06);

@@ -106,6 +106,28 @@ describe('swApi', () => {
 
     })
 
+    it('should convert number strings into numbers', function () {
+      this.swApi.planets().then((data) => {
+        this.planets = data.results
+      })
+
+      this.$httpBackend.expectGET('http://swapi.co/api/planets/')
+        .respond({
+          results: [
+            {a: 'abc', b: '123', c:'100203'},
+          ],
+        })
+
+      this.$httpBackend.flush()
+
+      expect(this.planets[0].a).toEqual(jasmine.any(String))
+      expect(this.planets[0].b).toEqual(jasmine.any(Number))
+      expect(this.planets[0].b).toEqual(123)
+      expect(this.planets[0].c).toEqual(jasmine.any(Number))
+      expect(this.planets[0].c).toEqual(100203)
+
+    })
+
     describe('pagination data', () => {
 
       beforeEach(function () {

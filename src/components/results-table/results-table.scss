@@ -12,6 +12,40 @@
 
 .results-table__header-cell {
   font-weight: normal;
+  position: relative;
+}
+
+.results-table__header-cell--sortable {
+  cursor: pointer;
+}
+
+.results-table__header-cell--sortable::after {
+  font-family: 'Glyphicons Halflings';
+  content: "\e150"; // sort icon
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 2px 0;
+}
+
+.results-table__header-cell--sortable:hover::after,
+.results-table__header-cell--sort-desc::after,
+.results-table__header-cell--sort-asc::after {
+  color: $text-light2;
+  background: $accent-color;
+  box-shadow: -2px -2px 2px $accent-color;
+}
+
+.results-table__header-cell--sort-desc::after {
+  content: "\e156"; // sort descending icon
+}
+
+.results-table__header-cell--sort-asc::after {
+  content: "\e155"; // sort ascending icon
 }
 
 .results-table__body {
