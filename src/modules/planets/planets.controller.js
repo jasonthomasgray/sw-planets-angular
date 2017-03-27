@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('sw-planets')
+  angular.module('sw-planets.modules')
     .controller('PlanetsController', PlanetsController)
 
   function PlanetsController(swApi, $stateParams) {
